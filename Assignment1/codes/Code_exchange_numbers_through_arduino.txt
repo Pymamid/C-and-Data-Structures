@@ -1,0 +1,306 @@
+/*  The following code takes in two numbers i,j and passes them to fun1 and fun2. Out of them, fun2 is successful in exchanging the two numbers on the seven segment display. */
+
+
+
+
+int disp_pin[7];  /* array for a-g pins of first 7-Segment display */
+int disp_pin2[7];  /* array for a-g pins of second 7-Segment display */
+
+void define_segment_pins(int a, int b, int c, int d, int e, int f, int g) /* Assigns first 7-segment display pins to board */
+{  
+  disp_pin[0] = a;
+  disp_pin[1] = b;
+  disp_pin[2] = c;
+  disp_pin[3] = d;
+  disp_pin[4] = e;
+  disp_pin[5] = f;
+  disp_pin[6] = g;
+}
+
+void define_segment_pins2(int a2, int b2, int c2, int d2, int e2, int f2, int g2) /* Assigns second 7-segment display pins to board */
+{  
+  disp_pin2[0] = a2;
+  disp_pin2[1] = b2;
+  disp_pin2[2] = c2;
+  disp_pin2[3] = d2;
+  disp_pin2[4] = e2;
+  disp_pin2[5] = f2;
+  disp_pin2[6] = g2;
+}
+
+void display_number(int num)  /* Function for displaying number (0-9) on the first seven segment display*/
+{
+  switch(num)
+  {
+    case 0:
+    digitalWrite(disp_pin[0], LOW); /* Drive disp_pin[0] to LOW */
+    digitalWrite(disp_pin[1], LOW); /* Driving LOW turns on LED segment for common anode display */
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], LOW);
+    digitalWrite(disp_pin[4], LOW);
+    digitalWrite(disp_pin[5], LOW);
+    digitalWrite(disp_pin[6], HIGH); 
+    break;
+    case 1:
+    digitalWrite(disp_pin[0], HIGH);  /* Drive disp_pin[7] to HIGH */
+    digitalWrite(disp_pin[1], LOW);
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], HIGH);  /* Driving HIGH turns off LED segment for common anode display */
+    digitalWrite(disp_pin[4], HIGH);
+    digitalWrite(disp_pin[5], HIGH);
+    digitalWrite(disp_pin[6], HIGH);
+    break;
+    case 2:
+    digitalWrite(disp_pin[0], LOW);
+    digitalWrite(disp_pin[1], LOW);
+    digitalWrite(disp_pin[2], HIGH);
+    digitalWrite(disp_pin[3], LOW);
+    digitalWrite(disp_pin[4], LOW);
+    digitalWrite(disp_pin[5], HIGH);
+    digitalWrite(disp_pin[6], LOW);
+    break;
+    case 3:
+    digitalWrite(disp_pin[0], LOW);
+    digitalWrite(disp_pin[1], LOW);
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], LOW);
+    digitalWrite(disp_pin[4], HIGH);
+    digitalWrite(disp_pin[5], HIGH);
+    digitalWrite(disp_pin[6], LOW);
+    break;
+    case 4:
+    digitalWrite(disp_pin[0], HIGH);
+    digitalWrite(disp_pin[1], LOW);
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], HIGH);
+    digitalWrite(disp_pin[4], HIGH);
+    digitalWrite(disp_pin[5], LOW);
+    digitalWrite(disp_pin[6], LOW);
+    break;
+    case 5:
+    digitalWrite(disp_pin[0], LOW);
+    digitalWrite(disp_pin[1], HIGH);
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], LOW);
+    digitalWrite(disp_pin[4], HIGH);
+    digitalWrite(disp_pin[5], LOW);
+    digitalWrite(disp_pin[6], LOW);
+    break;
+    case 6:
+    digitalWrite(disp_pin[0], LOW);
+    digitalWrite(disp_pin[1], HIGH);
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], LOW);
+    digitalWrite(disp_pin[4], LOW);
+    digitalWrite(disp_pin[5], LOW);
+    digitalWrite(disp_pin[6], LOW);
+    break;
+    case 7:
+    digitalWrite(disp_pin[0], LOW);
+    digitalWrite(disp_pin[1], LOW);
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], HIGH);
+    digitalWrite(disp_pin[4], HIGH);
+    digitalWrite(disp_pin[5], HIGH);
+    digitalWrite(disp_pin[6], HIGH);
+    break;
+    case 8:
+    digitalWrite(disp_pin[0], LOW);
+    digitalWrite(disp_pin[1], LOW);
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], LOW);
+    digitalWrite(disp_pin[4], LOW);
+    digitalWrite(disp_pin[5], LOW);
+    digitalWrite(disp_pin[6], LOW);
+    break;
+    case 9:
+    digitalWrite(disp_pin[0], LOW);
+    digitalWrite(disp_pin[1], LOW);
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], LOW);
+    digitalWrite(disp_pin[4], HIGH);
+    digitalWrite(disp_pin[5], LOW);
+    digitalWrite(disp_pin[6], LOW);
+    break;
+    default:
+    digitalWrite(disp_pin[0], HIGH);
+    digitalWrite(disp_pin[1], HIGH);
+    digitalWrite(disp_pin[2], LOW);
+    digitalWrite(disp_pin[3], LOW);
+    digitalWrite(disp_pin[4], LOW);
+    digitalWrite(disp_pin[5], HIGH);
+    digitalWrite(disp_pin[6], LOW);
+    break;
+  }
+}
+
+void display_number2(int num)  /* Function for displaying number (0-9) on the second seven segment display*/
+{
+  switch(num)
+  {
+    case 0:
+    digitalWrite(disp_pin2[0], LOW); 
+    digitalWrite(disp_pin2[1], LOW); 
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], LOW);
+    digitalWrite(disp_pin2[4], LOW);
+    digitalWrite(disp_pin2[5], LOW);
+    digitalWrite(disp_pin2[6], HIGH); 
+    break;
+    case 1:
+    digitalWrite(disp_pin2[0], HIGH);  
+    digitalWrite(disp_pin2[1], LOW);
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], HIGH);  
+    digitalWrite(disp_pin2[4], HIGH);
+    digitalWrite(disp_pin2[5], HIGH);
+    digitalWrite(disp_pin2[6], HIGH);
+    break;
+    case 2:
+    digitalWrite(disp_pin2[0], LOW);
+    digitalWrite(disp_pin2[1], LOW);
+    digitalWrite(disp_pin2[2], HIGH);
+    digitalWrite(disp_pin2[3], LOW);
+    digitalWrite(disp_pin2[4], LOW);
+    digitalWrite(disp_pin2[5], HIGH);
+    digitalWrite(disp_pin2[6], LOW);
+    break;
+    case 3:
+    digitalWrite(disp_pin2[0], LOW);
+    digitalWrite(disp_pin2[1], LOW);
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], LOW);
+    digitalWrite(disp_pin2[4], HIGH);
+    digitalWrite(disp_pin2[5], HIGH);
+    digitalWrite(disp_pin2[6], LOW);
+    break;
+    case 4:
+    digitalWrite(disp_pin2[0], HIGH);
+    digitalWrite(disp_pin2[1], LOW);
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], HIGH);
+    digitalWrite(disp_pin2[4], HIGH);
+    digitalWrite(disp_pin2[5], LOW);
+    digitalWrite(disp_pin2[6], LOW);
+    break;
+    case 5:
+    digitalWrite(disp_pin2[0], LOW);
+    digitalWrite(disp_pin2[1], HIGH);
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], LOW);
+    digitalWrite(disp_pin2[4], HIGH);
+    digitalWrite(disp_pin2[5], LOW);
+    digitalWrite(disp_pin2[6], LOW);
+    break;
+    case 6:
+    digitalWrite(disp_pin2[0], LOW);
+    digitalWrite(disp_pin2[1], HIGH);
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], LOW);
+    digitalWrite(disp_pin2[4], LOW);
+    digitalWrite(disp_pin2[5], LOW);
+    digitalWrite(disp_pin2[6], LOW);
+    break;
+    case 7:
+    digitalWrite(disp_pin2[0], LOW);
+    digitalWrite(disp_pin2[1], LOW);
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], HIGH);
+    digitalWrite(disp_pin2[4], HIGH);
+    digitalWrite(disp_pin2[5], HIGH);
+    digitalWrite(disp_pin2[6], HIGH);
+    break;
+    case 8:
+    digitalWrite(disp_pin2[0], LOW);
+    digitalWrite(disp_pin2[1], LOW);
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], LOW);
+    digitalWrite(disp_pin2[4], LOW);
+    digitalWrite(disp_pin2[5], LOW);
+    digitalWrite(disp_pin2[6], LOW);
+    break;
+    case 9:
+    digitalWrite(disp_pin2[0], LOW);
+    digitalWrite(disp_pin2[1], LOW);
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], LOW);
+    digitalWrite(disp_pin2[4], HIGH);
+    digitalWrite(disp_pin2[5], LOW);
+    digitalWrite(disp_pin2[6], LOW);
+    break;
+    default:
+    digitalWrite(disp_pin2[0], HIGH);
+    digitalWrite(disp_pin2[1], HIGH);
+    digitalWrite(disp_pin2[2], LOW);
+    digitalWrite(disp_pin2[3], LOW);
+    digitalWrite(disp_pin2[4], LOW);
+    digitalWrite(disp_pin2[5], HIGH);
+    digitalWrite(disp_pin2[6], LOW);
+    break;
+  }
+}
+
+/* fun1 does not exchange the numbers because of call by value mechanism */
+void fun1(int i, int j){
+  int temp;
+  temp=i;
+  i=j;
+  j=temp;
+}
+
+
+/* fun2 exchanges numbers because of call by address mechanism */
+void fun2(int* a, int* b){
+  int temp;
+  temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+void setup() {
+  pinMode(6, OUTPUT); 
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  pinMode(12, OUTPUT);
+  define_segment_pins(12,11,10,9,8,7,6);  /* a-g segment pins to Arduino */
+
+  pinMode(13, OUTPUT); 
+  pinMode(5, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(3, OUTPUT);
+  pinMode(2, OUTPUT);
+  pinMode(1, OUTPUT);
+  pinMode(0, OUTPUT);
+  define_segment_pins2(13,5,4,3,2,1,0);  /* a-g segment pins to Arduino */
+
+  int i=5,j=6;                   /*initialising the two numbers*/
+  display_number(i);
+  display_number2(j);
+  delay(2000);
+
+  fun1(i,j);   
+  display_number(i);
+  display_number2(j);
+   delay(2000);              /* effectively, numbers should not change for 4 seconds*/
+
+  display_number(10);
+  display_number2(10);       /* to indicate that fun1 has executed*/
+   delay(2000);
+
+
+  fun2(&i,&j);
+  display_number(i);
+  display_number2(j);         /*numbers get exchanged*/
+   delay(2000);
+  
+  display_number(10);
+  display_number2(10);       /* to indicate that fun2 has executed*/
+  delay(2000);       
+}
+
+void loop() {
+  //empty loop 
+}
